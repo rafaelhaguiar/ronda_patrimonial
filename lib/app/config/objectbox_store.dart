@@ -14,8 +14,8 @@ class ObjectBoxStore {
   static Future<ObjectBoxStore> create() async {
     final docsDir = await getApplicationDocumentsDirectory();
     // Future<Store> openStore() {...} is defined in the generated objectbox.g.dart
-    final store =
-        await openStore(directory: p.join(docsDir.path, "obx-example"));
+    final store = await openStore(
+        directory: p.join(docsDir.path, "ronda_patrimonial_db"));
     return ObjectBoxStore._create(store);
   }
 }
