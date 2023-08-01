@@ -1,17 +1,15 @@
 import 'package:objectbox/objectbox.dart';
 
 @Entity()
-final class PatrolEventModel {
+final class PanicAlertEventModel {
   @Id()
-  int patrolEventId;
+  int panicAlertEventId;
   int unitId;
-  int tagId;
   @Property(type: PropertyType.date)
   DateTime eventDateTime;
 
-  PatrolEventModel(
-      {required this.patrolEventId,
+  PanicAlertEventModel(
+      {required this.panicAlertEventId,
       required this.unitId,
-      required this.tagId,
       required this.eventDateTime});
 }

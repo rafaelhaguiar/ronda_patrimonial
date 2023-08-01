@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:75691064871373534",
-      "lastPropertyId": "3:445448907958993337",
+      "lastPropertyId": "4:8916581932999931584",
       "name": "PatrolEventModel",
       "properties": [
         {
@@ -23,12 +23,41 @@
           "id": "3:445448907958993337",
           "name": "eventDateTime",
           "type": 10
+        },
+        {
+          "id": "4:8916581932999931584",
+          "name": "unitId",
+          "type": 6
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:5027176135146991495",
+      "lastPropertyId": "3:4328713346741113261",
+      "name": "PanicAlertEventModel",
+      "properties": [
+        {
+          "id": "1:6632438436881818630",
+          "name": "panicAlertEventId",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:4757531137973359325",
+          "name": "unitId",
+          "type": 6
+        },
+        {
+          "id": "3:4328713346741113261",
+          "name": "eventDateTime",
+          "type": 10
         }
       ],
       "relations": []
     }
   ],
-  "lastEntityId": "1:75691064871373534",
+  "lastEntityId": "2:5027176135146991495",
   "lastIndexId": "0:0",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",

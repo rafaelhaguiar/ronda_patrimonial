@@ -14,6 +14,7 @@ import 'package:objectbox/internal.dart'; // generated code can access "internal
 import 'package:objectbox/objectbox.dart';
 import 'package:objectbox_flutter_libs/objectbox_flutter_libs.dart';
 
+import 'app/features/home/models/panic_alert_event_model.dart';
 import 'app/features/home/models/patrol_event_model.dart';
 
 export 'package:objectbox/objectbox.dart'; // so that callers only have to import this file
@@ -22,7 +23,7 @@ final _entities = <ModelEntity>[
   ModelEntity(
       id: const IdUid(1, 75691064871373534),
       name: 'PatrolEventModel',
-      lastPropertyId: const IdUid(3, 445448907958993337),
+      lastPropertyId: const IdUid(4, 8916581932999931584),
       flags: 0,
       properties: <ModelProperty>[
         ModelProperty(
@@ -37,6 +38,35 @@ final _entities = <ModelEntity>[
             flags: 0),
         ModelProperty(
             id: const IdUid(3, 445448907958993337),
+            name: 'eventDateTime',
+            type: 10,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(4, 8916581932999931584),
+            name: 'unitId',
+            type: 6,
+            flags: 0)
+      ],
+      relations: <ModelRelation>[],
+      backlinks: <ModelBacklink>[]),
+  ModelEntity(
+      id: const IdUid(2, 5027176135146991495),
+      name: 'PanicAlertEventModel',
+      lastPropertyId: const IdUid(3, 4328713346741113261),
+      flags: 0,
+      properties: <ModelProperty>[
+        ModelProperty(
+            id: const IdUid(1, 6632438436881818630),
+            name: 'panicAlertEventId',
+            type: 6,
+            flags: 1),
+        ModelProperty(
+            id: const IdUid(2, 4757531137973359325),
+            name: 'unitId',
+            type: 6,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(3, 4328713346741113261),
             name: 'eventDateTime',
             type: 10,
             flags: 0)
@@ -72,7 +102,7 @@ Future<Store> openStore(
 ModelDefinition getObjectBoxModel() {
   final model = ModelInfo(
       entities: _entities,
-      lastEntityId: const IdUid(1, 75691064871373534),
+      lastEntityId: const IdUid(2, 5027176135146991495),
       lastIndexId: const IdUid(0, 0),
       lastRelationId: const IdUid(0, 0),
       lastSequenceId: const IdUid(0, 0),
@@ -94,10 +124,11 @@ ModelDefinition getObjectBoxModel() {
           object.patrolEventId = id;
         },
         objectToFB: (PatrolEventModel object, fb.Builder fbb) {
-          fbb.startTable(4);
+          fbb.startTable(5);
           fbb.addInt64(0, object.patrolEventId);
           fbb.addInt64(1, object.tagId);
           fbb.addInt64(2, object.eventDateTime.millisecondsSinceEpoch);
+          fbb.addInt64(3, object.unitId);
           fbb.finish(fbb.endTable());
           return object.patrolEventId;
         },
@@ -106,12 +137,49 @@ ModelDefinition getObjectBoxModel() {
           final rootOffset = buffer.derefObject(0);
           final patrolEventIdParam =
               const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
+          final unitIdParam =
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 10, 0);
           final tagIdParam =
               const fb.Int64Reader().vTableGet(buffer, rootOffset, 6, 0);
           final eventDateTimeParam = DateTime.fromMillisecondsSinceEpoch(
               const fb.Int64Reader().vTableGet(buffer, rootOffset, 8, 0));
           final object = PatrolEventModel(
-              patrolEventIdParam, tagIdParam, eventDateTimeParam);
+              patrolEventId: patrolEventIdParam,
+              unitId: unitIdParam,
+              tagId: tagIdParam,
+              eventDateTime: eventDateTimeParam);
+
+          return object;
+        }),
+    PanicAlertEventModel: EntityDefinition<PanicAlertEventModel>(
+        model: _entities[1],
+        toOneRelations: (PanicAlertEventModel object) => [],
+        toManyRelations: (PanicAlertEventModel object) => {},
+        getId: (PanicAlertEventModel object) => object.panicAlertEventId,
+        setId: (PanicAlertEventModel object, int id) {
+          object.panicAlertEventId = id;
+        },
+        objectToFB: (PanicAlertEventModel object, fb.Builder fbb) {
+          fbb.startTable(4);
+          fbb.addInt64(0, object.panicAlertEventId);
+          fbb.addInt64(1, object.unitId);
+          fbb.addInt64(2, object.eventDateTime.millisecondsSinceEpoch);
+          fbb.finish(fbb.endTable());
+          return object.panicAlertEventId;
+        },
+        objectFromFB: (Store store, ByteData fbData) {
+          final buffer = fb.BufferContext(fbData);
+          final rootOffset = buffer.derefObject(0);
+          final panicAlertEventIdParam =
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
+          final unitIdParam =
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 6, 0);
+          final eventDateTimeParam = DateTime.fromMillisecondsSinceEpoch(
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 8, 0));
+          final object = PanicAlertEventModel(
+              panicAlertEventId: panicAlertEventIdParam,
+              unitId: unitIdParam,
+              eventDateTime: eventDateTimeParam);
 
           return object;
         })
@@ -133,4 +201,23 @@ class PatrolEventModel_ {
   /// see [PatrolEventModel.eventDateTime]
   static final eventDateTime =
       QueryIntegerProperty<PatrolEventModel>(_entities[0].properties[2]);
+
+  /// see [PatrolEventModel.unitId]
+  static final unitId =
+      QueryIntegerProperty<PatrolEventModel>(_entities[0].properties[3]);
+}
+
+/// [PanicAlertEventModel] entity fields to define ObjectBox queries.
+class PanicAlertEventModel_ {
+  /// see [PanicAlertEventModel.panicAlertEventId]
+  static final panicAlertEventId =
+      QueryIntegerProperty<PanicAlertEventModel>(_entities[1].properties[0]);
+
+  /// see [PanicAlertEventModel.unitId]
+  static final unitId =
+      QueryIntegerProperty<PanicAlertEventModel>(_entities[1].properties[1]);
+
+  /// see [PanicAlertEventModel.eventDateTime]
+  static final eventDateTime =
+      QueryIntegerProperty<PanicAlertEventModel>(_entities[1].properties[2]);
 }
