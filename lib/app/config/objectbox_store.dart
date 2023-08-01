@@ -1,6 +1,6 @@
-import 'package:objectbox/objectbox.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
+import 'package:ronda_patrimonial/objectbox.g.dart';
 
 class ObjectBoxStore {
   /// The Store of this app.
