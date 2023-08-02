@@ -4,7 +4,7 @@ import 'package:ronda_patrimonial/app/features/home/models/panic_alert_event_mod
 abstract interface class IPatrolTagsLocalDatasource {
   Future<bool> savePanics({required PanicAlertEventModel event});
   getPanics();
-  removePanic();
+  Future<bool> removePanic({required PanicAlertEventModel event});
 }
 
 final class PanicAlertLocalDatasourceImpl
@@ -15,8 +15,14 @@ final class PanicAlertLocalDatasourceImpl
   }
 
   @override
-  removePanic() {
-    throw UnimplementedError();
+  Future<bool> removePanic({required PanicAlertEventModel event}) async {
+    try {
+      final store = await ObjectBoxManager.getObjectBoxStore();
+      store.box<PanicAlertEventModel>().remove(event.unitId);
+      return true;
+    } catch (e) {
+      rethrow;
+    }
   }
 
   @override
