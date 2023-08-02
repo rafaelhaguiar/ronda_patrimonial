@@ -1,5 +1,8 @@
+import 'package:ronda_patrimonial/app/config/objectbox_manager.dart';
+import 'package:ronda_patrimonial/app/features/home/models/panic_alert_event_model.dart';
+
 abstract interface class IPatrolTagsLocalDatasource {
-  savePanics();
+  Future<bool> savePanics({required PanicAlertEventModel event});
   getPanics();
   removePanic();
 }
@@ -17,7 +20,13 @@ final class PanicAlertLocalDatasourceImpl
   }
 
   @override
-  savePanics() {
-    throw UnimplementedError();
+  Future<bool> savePanics({required PanicAlertEventModel event}) async {
+    try {
+      final store = await ObjectBoxManager.getObjectBoxStore();
+      store.box<PanicAlertEventModel>().put(event);
+      return true;
+    } catch (e) {
+      rethrow;
+    }
   }
 }
