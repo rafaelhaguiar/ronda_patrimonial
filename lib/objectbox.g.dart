@@ -16,6 +16,8 @@ import 'package:objectbox_flutter_libs/objectbox_flutter_libs.dart';
 
 import 'app/features/home/models/panic_alert_event_model.dart';
 import 'app/features/home/models/patrol_event_model.dart';
+import 'app/features/home/models/tag_model.dart';
+import 'app/features/home/models/unit_model.dart';
 
 export 'package:objectbox/objectbox.dart'; // so that callers only have to import this file
 
@@ -72,6 +74,59 @@ final _entities = <ModelEntity>[
             flags: 0)
       ],
       relations: <ModelRelation>[],
+      backlinks: <ModelBacklink>[]),
+  ModelEntity(
+      id: const IdUid(3, 2821305195249272947),
+      name: 'UnitModel',
+      lastPropertyId: const IdUid(2, 3600672083111990031),
+      flags: 0,
+      properties: <ModelProperty>[
+        ModelProperty(
+            id: const IdUid(1, 810276591203446414),
+            name: 'unitId',
+            type: 6,
+            flags: 1),
+        ModelProperty(
+            id: const IdUid(2, 3600672083111990031),
+            name: 'unitName',
+            type: 9,
+            flags: 0)
+      ],
+      relations: <ModelRelation>[
+        ModelRelation(
+            id: const IdUid(1, 7009608560862662240),
+            name: 'tagModelList',
+            targetId: const IdUid(4, 3263619209923188303))
+      ],
+      backlinks: <ModelBacklink>[]),
+  ModelEntity(
+      id: const IdUid(4, 3263619209923188303),
+      name: 'TagModel',
+      lastPropertyId: const IdUid(4, 5018721905925567127),
+      flags: 0,
+      properties: <ModelProperty>[
+        ModelProperty(
+            id: const IdUid(1, 1880346535826512557),
+            name: 'id',
+            type: 6,
+            flags: 1),
+        ModelProperty(
+            id: const IdUid(2, 4151838864869919433),
+            name: 'title',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(3, 5341133999396300665),
+            name: 'type',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(4, 5018721905925567127),
+            name: 'isActive',
+            type: 1,
+            flags: 0)
+      ],
+      relations: <ModelRelation>[],
       backlinks: <ModelBacklink>[])
 ];
 
@@ -102,9 +157,9 @@ Future<Store> openStore(
 ModelDefinition getObjectBoxModel() {
   final model = ModelInfo(
       entities: _entities,
-      lastEntityId: const IdUid(2, 5027176135146991495),
+      lastEntityId: const IdUid(4, 3263619209923188303),
       lastIndexId: const IdUid(0, 0),
-      lastRelationId: const IdUid(0, 0),
+      lastRelationId: const IdUid(1, 7009608560862662240),
       lastSequenceId: const IdUid(0, 0),
       retiredEntityUids: const [],
       retiredIndexUids: const [],
@@ -182,6 +237,72 @@ ModelDefinition getObjectBoxModel() {
               eventDateTime: eventDateTimeParam);
 
           return object;
+        }),
+    UnitModel: EntityDefinition<UnitModel>(
+        model: _entities[2],
+        toOneRelations: (UnitModel object) => [],
+        toManyRelations: (UnitModel object) =>
+            {RelInfo<UnitModel>.toMany(1, object.unitId): object.tagModelList},
+        getId: (UnitModel object) => object.unitId,
+        setId: (UnitModel object, int id) {
+          object.unitId = id;
+        },
+        objectToFB: (UnitModel object, fb.Builder fbb) {
+          final unitNameOffset = fbb.writeString(object.unitName);
+          fbb.startTable(3);
+          fbb.addInt64(0, object.unitId);
+          fbb.addOffset(1, unitNameOffset);
+          fbb.finish(fbb.endTable());
+          return object.unitId;
+        },
+        objectFromFB: (Store store, ByteData fbData) {
+          final buffer = fb.BufferContext(fbData);
+          final rootOffset = buffer.derefObject(0);
+          final unitIdParam =
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
+          final unitNameParam = const fb.StringReader(asciiOptimization: true)
+              .vTableGet(buffer, rootOffset, 6, '');
+          final tagModelListParam = ToMany<TagModel>();
+          final object =
+              UnitModel(unitIdParam, unitNameParam, tagModelListParam);
+          InternalToManyAccess.setRelInfo<UnitModel>(object.tagModelList, store,
+              RelInfo<UnitModel>.toMany(1, object.unitId));
+          return object;
+        }),
+    TagModel: EntityDefinition<TagModel>(
+        model: _entities[3],
+        toOneRelations: (TagModel object) => [],
+        toManyRelations: (TagModel object) => {},
+        getId: (TagModel object) => object.id,
+        setId: (TagModel object, int id) {
+          object.id = id;
+        },
+        objectToFB: (TagModel object, fb.Builder fbb) {
+          final titleOffset = fbb.writeString(object.title);
+          final typeOffset = fbb.writeString(object.type);
+          fbb.startTable(5);
+          fbb.addInt64(0, object.id);
+          fbb.addOffset(1, titleOffset);
+          fbb.addOffset(2, typeOffset);
+          fbb.addBool(3, object.isActive);
+          fbb.finish(fbb.endTable());
+          return object.id;
+        },
+        objectFromFB: (Store store, ByteData fbData) {
+          final buffer = fb.BufferContext(fbData);
+          final rootOffset = buffer.derefObject(0);
+          final idParam =
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
+          final titleParam = const fb.StringReader(asciiOptimization: true)
+              .vTableGet(buffer, rootOffset, 6, '');
+          final typeParam = const fb.StringReader(asciiOptimization: true)
+              .vTableGet(buffer, rootOffset, 8, '');
+          final isActiveParam =
+              const fb.BoolReader().vTableGet(buffer, rootOffset, 10, false);
+          final object =
+              TagModel(idParam, titleParam, typeParam, isActiveParam);
+
+          return object;
         })
   };
 
@@ -220,4 +341,36 @@ class PanicAlertEventModel_ {
   /// see [PanicAlertEventModel.eventDateTime]
   static final eventDateTime =
       QueryIntegerProperty<PanicAlertEventModel>(_entities[1].properties[2]);
+}
+
+/// [UnitModel] entity fields to define ObjectBox queries.
+class UnitModel_ {
+  /// see [UnitModel.unitId]
+  static final unitId =
+      QueryIntegerProperty<UnitModel>(_entities[2].properties[0]);
+
+  /// see [UnitModel.unitName]
+  static final unitName =
+      QueryStringProperty<UnitModel>(_entities[2].properties[1]);
+
+  /// see [UnitModel.tagModelList]
+  static final tagModelList =
+      QueryRelationToMany<UnitModel, TagModel>(_entities[2].relations[0]);
+}
+
+/// [TagModel] entity fields to define ObjectBox queries.
+class TagModel_ {
+  /// see [TagModel.id]
+  static final id = QueryIntegerProperty<TagModel>(_entities[3].properties[0]);
+
+  /// see [TagModel.title]
+  static final title =
+      QueryStringProperty<TagModel>(_entities[3].properties[1]);
+
+  /// see [TagModel.type]
+  static final type = QueryStringProperty<TagModel>(_entities[3].properties[2]);
+
+  /// see [TagModel.isActive]
+  static final isActive =
+      QueryBooleanProperty<TagModel>(_entities[3].properties[3]);
 }
