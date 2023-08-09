@@ -1,3 +1,3 @@
 # ronda_patrimonial
 
-A new Flutter project.
+An app to make easy the implementation of security patrols
