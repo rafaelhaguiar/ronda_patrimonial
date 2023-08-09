@@ -14,61 +14,32 @@ import 'package:objectbox/internal.dart'; // generated code can access "internal
 import 'package:objectbox/objectbox.dart';
 import 'package:objectbox_flutter_libs/objectbox_flutter_libs.dart';
 
+import 'app/core/models/unit_model.dart';
 import 'app/features/home/models/panic_alert_event_model.dart';
 import 'app/features/home/models/patrol_event_model.dart';
 import 'app/features/home/models/tag_model.dart';
-import 'app/features/home/models/unit_model.dart';
 
 export 'package:objectbox/objectbox.dart'; // so that callers only have to import this file
 
 final _entities = <ModelEntity>[
   ModelEntity(
-      id: const IdUid(1, 75691064871373534),
-      name: 'PatrolEventModel',
-      lastPropertyId: const IdUid(4, 8916581932999931584),
-      flags: 0,
-      properties: <ModelProperty>[
-        ModelProperty(
-            id: const IdUid(1, 6984677465033183772),
-            name: 'patrolEventId',
-            type: 6,
-            flags: 1),
-        ModelProperty(
-            id: const IdUid(2, 8728213409163117172),
-            name: 'tagId',
-            type: 6,
-            flags: 0),
-        ModelProperty(
-            id: const IdUid(3, 445448907958993337),
-            name: 'eventDateTime',
-            type: 10,
-            flags: 0),
-        ModelProperty(
-            id: const IdUid(4, 8916581932999931584),
-            name: 'unitId',
-            type: 6,
-            flags: 0)
-      ],
-      relations: <ModelRelation>[],
-      backlinks: <ModelBacklink>[]),
-  ModelEntity(
-      id: const IdUid(2, 5027176135146991495),
+      id: const IdUid(1, 3087131332108098366),
       name: 'PanicAlertEventModel',
-      lastPropertyId: const IdUid(3, 4328713346741113261),
+      lastPropertyId: const IdUid(3, 8440443800369935513),
       flags: 0,
       properties: <ModelProperty>[
         ModelProperty(
-            id: const IdUid(1, 6632438436881818630),
+            id: const IdUid(1, 5832780676944272820),
             name: 'panicAlertEventId',
             type: 6,
             flags: 1),
         ModelProperty(
-            id: const IdUid(2, 4757531137973359325),
+            id: const IdUid(2, 919228545884023648),
             name: 'unitId',
             type: 6,
             flags: 0),
         ModelProperty(
-            id: const IdUid(3, 4328713346741113261),
+            id: const IdUid(3, 8440443800369935513),
             name: 'eventDateTime',
             type: 10,
             flags: 0)
@@ -76,54 +47,78 @@ final _entities = <ModelEntity>[
       relations: <ModelRelation>[],
       backlinks: <ModelBacklink>[]),
   ModelEntity(
-      id: const IdUid(3, 2821305195249272947),
-      name: 'UnitModel',
-      lastPropertyId: const IdUid(2, 3600672083111990031),
+      id: const IdUid(2, 5745760903728289519),
+      name: 'PatrolEventModel',
+      lastPropertyId: const IdUid(4, 2571802167605091145),
       flags: 0,
       properties: <ModelProperty>[
         ModelProperty(
-            id: const IdUid(1, 810276591203446414),
-            name: 'unitId',
+            id: const IdUid(1, 8565743388301742838),
+            name: 'patrolEventId',
             type: 6,
             flags: 1),
         ModelProperty(
-            id: const IdUid(2, 3600672083111990031),
-            name: 'unitName',
-            type: 9,
+            id: const IdUid(2, 1512964026652504034),
+            name: 'unitId',
+            type: 6,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(3, 7789797893567335538),
+            name: 'tagId',
+            type: 6,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(4, 2571802167605091145),
+            name: 'eventDateTime',
+            type: 10,
             flags: 0)
       ],
-      relations: <ModelRelation>[
-        ModelRelation(
-            id: const IdUid(1, 7009608560862662240),
-            name: 'tagModelList',
-            targetId: const IdUid(4, 3263619209923188303))
-      ],
+      relations: <ModelRelation>[],
       backlinks: <ModelBacklink>[]),
   ModelEntity(
-      id: const IdUid(4, 3263619209923188303),
+      id: const IdUid(3, 8262870305814255861),
       name: 'TagModel',
-      lastPropertyId: const IdUid(4, 5018721905925567127),
+      lastPropertyId: const IdUid(4, 6500600897761070297),
       flags: 0,
       properties: <ModelProperty>[
         ModelProperty(
-            id: const IdUid(1, 1880346535826512557),
+            id: const IdUid(1, 4855903845281571095),
             name: 'id',
             type: 6,
             flags: 1),
         ModelProperty(
-            id: const IdUid(2, 4151838864869919433),
+            id: const IdUid(2, 6413125767259976566),
             name: 'title',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(3, 5341133999396300665),
+            id: const IdUid(3, 5826872289631033800),
             name: 'type',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(4, 5018721905925567127),
+            id: const IdUid(4, 6500600897761070297),
             name: 'isActive',
             type: 1,
+            flags: 0)
+      ],
+      relations: <ModelRelation>[],
+      backlinks: <ModelBacklink>[]),
+  ModelEntity(
+      id: const IdUid(4, 3095805658382075902),
+      name: 'UnitModel',
+      lastPropertyId: const IdUid(4, 3589584843093084745),
+      flags: 0,
+      properties: <ModelProperty>[
+        ModelProperty(
+            id: const IdUid(3, 859114261221241486),
+            name: 'id',
+            type: 6,
+            flags: 129),
+        ModelProperty(
+            id: const IdUid(4, 3589584843093084745),
+            name: 'title',
+            type: 9,
             flags: 0)
       ],
       relations: <ModelRelation>[],
@@ -157,57 +152,21 @@ Future<Store> openStore(
 ModelDefinition getObjectBoxModel() {
   final model = ModelInfo(
       entities: _entities,
-      lastEntityId: const IdUid(4, 3263619209923188303),
+      lastEntityId: const IdUid(4, 3095805658382075902),
       lastIndexId: const IdUid(0, 0),
-      lastRelationId: const IdUid(1, 7009608560862662240),
+      lastRelationId: const IdUid(1, 3447508778015872074),
       lastSequenceId: const IdUid(0, 0),
       retiredEntityUids: const [],
       retiredIndexUids: const [],
-      retiredPropertyUids: const [],
-      retiredRelationUids: const [],
+      retiredPropertyUids: const [1142397732133121684, 2677158136543875206],
+      retiredRelationUids: const [3447508778015872074],
       modelVersion: 5,
       modelVersionParserMinimum: 5,
       version: 1);
 
   final bindings = <Type, EntityDefinition>{
-    PatrolEventModel: EntityDefinition<PatrolEventModel>(
-        model: _entities[0],
-        toOneRelations: (PatrolEventModel object) => [],
-        toManyRelations: (PatrolEventModel object) => {},
-        getId: (PatrolEventModel object) => object.patrolEventId,
-        setId: (PatrolEventModel object, int id) {
-          object.patrolEventId = id;
-        },
-        objectToFB: (PatrolEventModel object, fb.Builder fbb) {
-          fbb.startTable(5);
-          fbb.addInt64(0, object.patrolEventId);
-          fbb.addInt64(1, object.tagId);
-          fbb.addInt64(2, object.eventDateTime.millisecondsSinceEpoch);
-          fbb.addInt64(3, object.unitId);
-          fbb.finish(fbb.endTable());
-          return object.patrolEventId;
-        },
-        objectFromFB: (Store store, ByteData fbData) {
-          final buffer = fb.BufferContext(fbData);
-          final rootOffset = buffer.derefObject(0);
-          final patrolEventIdParam =
-              const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
-          final unitIdParam =
-              const fb.Int64Reader().vTableGet(buffer, rootOffset, 10, 0);
-          final tagIdParam =
-              const fb.Int64Reader().vTableGet(buffer, rootOffset, 6, 0);
-          final eventDateTimeParam = DateTime.fromMillisecondsSinceEpoch(
-              const fb.Int64Reader().vTableGet(buffer, rootOffset, 8, 0));
-          final object = PatrolEventModel(
-              patrolEventId: patrolEventIdParam,
-              unitId: unitIdParam,
-              tagId: tagIdParam,
-              eventDateTime: eventDateTimeParam);
-
-          return object;
-        }),
     PanicAlertEventModel: EntityDefinition<PanicAlertEventModel>(
-        model: _entities[1],
+        model: _entities[0],
         toOneRelations: (PanicAlertEventModel object) => [],
         toManyRelations: (PanicAlertEventModel object) => {},
         getId: (PanicAlertEventModel object) => object.panicAlertEventId,
@@ -238,39 +197,44 @@ ModelDefinition getObjectBoxModel() {
 
           return object;
         }),
-    UnitModel: EntityDefinition<UnitModel>(
-        model: _entities[2],
-        toOneRelations: (UnitModel object) => [],
-        toManyRelations: (UnitModel object) =>
-            {RelInfo<UnitModel>.toMany(1, object.unitId): object.tagModelList},
-        getId: (UnitModel object) => object.unitId,
-        setId: (UnitModel object, int id) {
-          object.unitId = id;
+    PatrolEventModel: EntityDefinition<PatrolEventModel>(
+        model: _entities[1],
+        toOneRelations: (PatrolEventModel object) => [],
+        toManyRelations: (PatrolEventModel object) => {},
+        getId: (PatrolEventModel object) => object.patrolEventId,
+        setId: (PatrolEventModel object, int id) {
+          object.patrolEventId = id;
         },
-        objectToFB: (UnitModel object, fb.Builder fbb) {
-          final unitNameOffset = fbb.writeString(object.unitName);
-          fbb.startTable(3);
-          fbb.addInt64(0, object.unitId);
-          fbb.addOffset(1, unitNameOffset);
+        objectToFB: (PatrolEventModel object, fb.Builder fbb) {
+          fbb.startTable(5);
+          fbb.addInt64(0, object.patrolEventId);
+          fbb.addInt64(1, object.unitId);
+          fbb.addInt64(2, object.tagId);
+          fbb.addInt64(3, object.eventDateTime.millisecondsSinceEpoch);
           fbb.finish(fbb.endTable());
-          return object.unitId;
+          return object.patrolEventId;
         },
         objectFromFB: (Store store, ByteData fbData) {
           final buffer = fb.BufferContext(fbData);
           final rootOffset = buffer.derefObject(0);
-          final unitIdParam =
+          final patrolEventIdParam =
               const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
-          final unitNameParam = const fb.StringReader(asciiOptimization: true)
-              .vTableGet(buffer, rootOffset, 6, '');
-          final tagModelListParam = ToMany<TagModel>();
-          final object =
-              UnitModel(unitIdParam, unitNameParam, tagModelListParam);
-          InternalToManyAccess.setRelInfo<UnitModel>(object.tagModelList, store,
-              RelInfo<UnitModel>.toMany(1, object.unitId));
+          final unitIdParam =
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 6, 0);
+          final tagIdParam =
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 8, 0);
+          final eventDateTimeParam = DateTime.fromMillisecondsSinceEpoch(
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 10, 0));
+          final object = PatrolEventModel(
+              patrolEventId: patrolEventIdParam,
+              unitId: unitIdParam,
+              tagId: tagIdParam,
+              eventDateTime: eventDateTimeParam);
+
           return object;
         }),
     TagModel: EntityDefinition<TagModel>(
-        model: _entities[3],
+        model: _entities[2],
         toOneRelations: (TagModel object) => [],
         toManyRelations: (TagModel object) => {},
         getId: (TagModel object) => object.id,
@@ -303,74 +267,102 @@ ModelDefinition getObjectBoxModel() {
               TagModel(idParam, titleParam, typeParam, isActiveParam);
 
           return object;
+        }),
+    UnitModel: EntityDefinition<UnitModel>(
+        model: _entities[3],
+        toOneRelations: (UnitModel object) => [],
+        toManyRelations: (UnitModel object) => {},
+        getId: (UnitModel object) => object.id,
+        setId: (UnitModel object, int id) {
+          if (object.id != id) {
+            throw ArgumentError('Field UnitModel.id is read-only '
+                '(final or getter-only) and it was declared to be self-assigned. '
+                'However, the currently inserted object (.id=${object.id}) '
+                "doesn't match the inserted ID (ID $id). "
+                'You must assign an ID before calling [box.put()].');
+          }
+        },
+        objectToFB: (UnitModel object, fb.Builder fbb) {
+          final titleOffset = fbb.writeString(object.title);
+          fbb.startTable(5);
+          fbb.addInt64(2, object.id);
+          fbb.addOffset(3, titleOffset);
+          fbb.finish(fbb.endTable());
+          return object.id;
+        },
+        objectFromFB: (Store store, ByteData fbData) {
+          final buffer = fb.BufferContext(fbData);
+          final rootOffset = buffer.derefObject(0);
+          final idParam =
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 8, 0);
+          final titleParam = const fb.StringReader(asciiOptimization: true)
+              .vTableGet(buffer, rootOffset, 10, '');
+          final object = UnitModel(idParam, titleParam);
+
+          return object;
         })
   };
 
   return ModelDefinition(model, bindings);
 }
 
-/// [PatrolEventModel] entity fields to define ObjectBox queries.
-class PatrolEventModel_ {
-  /// see [PatrolEventModel.patrolEventId]
-  static final patrolEventId =
-      QueryIntegerProperty<PatrolEventModel>(_entities[0].properties[0]);
-
-  /// see [PatrolEventModel.tagId]
-  static final tagId =
-      QueryIntegerProperty<PatrolEventModel>(_entities[0].properties[1]);
-
-  /// see [PatrolEventModel.eventDateTime]
-  static final eventDateTime =
-      QueryIntegerProperty<PatrolEventModel>(_entities[0].properties[2]);
-
-  /// see [PatrolEventModel.unitId]
-  static final unitId =
-      QueryIntegerProperty<PatrolEventModel>(_entities[0].properties[3]);
-}
-
 /// [PanicAlertEventModel] entity fields to define ObjectBox queries.
 class PanicAlertEventModel_ {
   /// see [PanicAlertEventModel.panicAlertEventId]
   static final panicAlertEventId =
-      QueryIntegerProperty<PanicAlertEventModel>(_entities[1].properties[0]);
+      QueryIntegerProperty<PanicAlertEventModel>(_entities[0].properties[0]);
 
   /// see [PanicAlertEventModel.unitId]
   static final unitId =
-      QueryIntegerProperty<PanicAlertEventModel>(_entities[1].properties[1]);
+      QueryIntegerProperty<PanicAlertEventModel>(_entities[0].properties[1]);
 
   /// see [PanicAlertEventModel.eventDateTime]
   static final eventDateTime =
-      QueryIntegerProperty<PanicAlertEventModel>(_entities[1].properties[2]);
+      QueryIntegerProperty<PanicAlertEventModel>(_entities[0].properties[2]);
 }
 
-/// [UnitModel] entity fields to define ObjectBox queries.
-class UnitModel_ {
-  /// see [UnitModel.unitId]
+/// [PatrolEventModel] entity fields to define ObjectBox queries.
+class PatrolEventModel_ {
+  /// see [PatrolEventModel.patrolEventId]
+  static final patrolEventId =
+      QueryIntegerProperty<PatrolEventModel>(_entities[1].properties[0]);
+
+  /// see [PatrolEventModel.unitId]
   static final unitId =
-      QueryIntegerProperty<UnitModel>(_entities[2].properties[0]);
+      QueryIntegerProperty<PatrolEventModel>(_entities[1].properties[1]);
 
-  /// see [UnitModel.unitName]
-  static final unitName =
-      QueryStringProperty<UnitModel>(_entities[2].properties[1]);
+  /// see [PatrolEventModel.tagId]
+  static final tagId =
+      QueryIntegerProperty<PatrolEventModel>(_entities[1].properties[2]);
 
-  /// see [UnitModel.tagModelList]
-  static final tagModelList =
-      QueryRelationToMany<UnitModel, TagModel>(_entities[2].relations[0]);
+  /// see [PatrolEventModel.eventDateTime]
+  static final eventDateTime =
+      QueryIntegerProperty<PatrolEventModel>(_entities[1].properties[3]);
 }
 
 /// [TagModel] entity fields to define ObjectBox queries.
 class TagModel_ {
   /// see [TagModel.id]
-  static final id = QueryIntegerProperty<TagModel>(_entities[3].properties[0]);
+  static final id = QueryIntegerProperty<TagModel>(_entities[2].properties[0]);
 
   /// see [TagModel.title]
   static final title =
-      QueryStringProperty<TagModel>(_entities[3].properties[1]);
+      QueryStringProperty<TagModel>(_entities[2].properties[1]);
 
   /// see [TagModel.type]
-  static final type = QueryStringProperty<TagModel>(_entities[3].properties[2]);
+  static final type = QueryStringProperty<TagModel>(_entities[2].properties[2]);
 
   /// see [TagModel.isActive]
   static final isActive =
-      QueryBooleanProperty<TagModel>(_entities[3].properties[3]);
+      QueryBooleanProperty<TagModel>(_entities[2].properties[3]);
+}
+
+/// [UnitModel] entity fields to define ObjectBox queries.
+class UnitModel_ {
+  /// see [UnitModel.id]
+  static final id = QueryIntegerProperty<UnitModel>(_entities[3].properties[0]);
+
+  /// see [UnitModel.title]
+  static final title =
+      QueryStringProperty<UnitModel>(_entities[3].properties[1]);
 }

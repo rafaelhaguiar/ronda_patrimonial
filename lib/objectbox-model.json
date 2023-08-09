@@ -4,52 +4,23 @@
   "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
   "entities": [
     {
-      "id": "1:75691064871373534",
-      "lastPropertyId": "4:8916581932999931584",
-      "name": "PatrolEventModel",
-      "properties": [
-        {
-          "id": "1:6984677465033183772",
-          "name": "patrolEventId",
-          "type": 6,
-          "flags": 1
-        },
-        {
-          "id": "2:8728213409163117172",
-          "name": "tagId",
-          "type": 6
-        },
-        {
-          "id": "3:445448907958993337",
-          "name": "eventDateTime",
-          "type": 10
-        },
-        {
-          "id": "4:8916581932999931584",
-          "name": "unitId",
-          "type": 6
-        }
-      ],
-      "relations": []
-    },
-    {
-      "id": "2:5027176135146991495",
-      "lastPropertyId": "3:4328713346741113261",
+      "id": "1:3087131332108098366",
+      "lastPropertyId": "3:8440443800369935513",
       "name": "PanicAlertEventModel",
       "properties": [
         {
-          "id": "1:6632438436881818630",
+          "id": "1:5832780676944272820",
           "name": "panicAlertEventId",
           "type": 6,
           "flags": 1
         },
         {
-          "id": "2:4757531137973359325",
+          "id": "2:919228545884023648",
           "name": "unitId",
           "type": 6
         },
         {
-          "id": "3:4328713346741113261",
+          "id": "3:8440443800369935513",
           "name": "eventDateTime",
           "type": 10
         }
@@ -57,69 +28,97 @@
       "relations": []
     },
     {
-      "id": "3:2821305195249272947",
-      "lastPropertyId": "2:3600672083111990031",
-      "name": "UnitModel",
+      "id": "2:5745760903728289519",
+      "lastPropertyId": "4:2571802167605091145",
+      "name": "PatrolEventModel",
       "properties": [
         {
-          "id": "1:810276591203446414",
-          "name": "unitId",
+          "id": "1:8565743388301742838",
+          "name": "patrolEventId",
           "type": 6,
           "flags": 1
         },
         {
-          "id": "2:3600672083111990031",
-          "name": "unitName",
-          "type": 9
+          "id": "2:1512964026652504034",
+          "name": "unitId",
+          "type": 6
+        },
+        {
+          "id": "3:7789797893567335538",
+          "name": "tagId",
+          "type": 6
+        },
+        {
+          "id": "4:2571802167605091145",
+          "name": "eventDateTime",
+          "type": 10
         }
       ],
-      "relations": [
-        {
-          "id": "1:7009608560862662240",
-          "name": "tagModelList",
-          "targetId": "4:3263619209923188303"
-        }
-      ]
+      "relations": []
     },
     {
-      "id": "4:3263619209923188303",
-      "lastPropertyId": "4:5018721905925567127",
+      "id": "3:8262870305814255861",
+      "lastPropertyId": "4:6500600897761070297",
       "name": "TagModel",
       "properties": [
         {
-          "id": "1:1880346535826512557",
+          "id": "1:4855903845281571095",
           "name": "id",
           "type": 6,
           "flags": 1
         },
         {
-          "id": "2:4151838864869919433",
+          "id": "2:6413125767259976566",
           "name": "title",
           "type": 9
         },
         {
-          "id": "3:5341133999396300665",
+          "id": "3:5826872289631033800",
           "name": "type",
           "type": 9
         },
         {
-          "id": "4:5018721905925567127",
+          "id": "4:6500600897761070297",
           "name": "isActive",
           "type": 1
         }
       ],
       "relations": []
+    },
+    {
+      "id": "4:3095805658382075902",
+      "lastPropertyId": "4:3589584843093084745",
+      "name": "UnitModel",
+      "properties": [
+        {
+          "id": "3:859114261221241486",
+          "name": "id",
+          "type": 6,
+          "flags": 129
+        },
+        {
+          "id": "4:3589584843093084745",
+          "name": "title",
+          "type": 9
+        }
+      ],
+      "relations": []
     }
   ],
-  "lastEntityId": "4:3263619209923188303",
+  "lastEntityId": "4:3095805658382075902",
   "lastIndexId": "0:0",
-  "lastRelationId": "1:7009608560862662240",
+  "lastRelationId": "1:3447508778015872074",
   "lastSequenceId": "0:0",
   "modelVersion": 5,
   "modelVersionParserMinimum": 5,
   "retiredEntityUids": [],
   "retiredIndexUids": [],
-  "retiredPropertyUids": [],
-  "retiredRelationUids": [],
+  "retiredPropertyUids": [
+    1142397732133121684,
+    2677158136543875206
+  ],
+  "retiredRelationUids": [
+    3447508778015872074
+  ],
   "version": 1
 }
