@@ -1,10 +1,23 @@
+import 'package:ronda_patrimonial/app/core/models/unit_model.dart';
+import 'package:ronda_patrimonial/objectbox.g.dart';
+
 abstract interface class ISiginLocalDatasource {
-  Future saveSession();
+  Future<UnitModel> saveSession({required UnitModel unitModel});
 }
 
 final class SiginLocalDatasourceImpl implements ISiginLocalDatasource {
+  final Store objectBoxStore;
+
+  SiginLocalDatasourceImpl({required this.objectBoxStore});
+
   @override
-  Future saveSession() async {
-    throw UnimplementedError();
+  Future<UnitModel> saveSession({required UnitModel unitModel}) async {
+    try {
+      final box = objectBoxStore.box<UnitModel>();
+      box.put(unitModel);
+      return unitModel;
+    } catch (e) {
+      rethrow;
+    }
   }
 }
