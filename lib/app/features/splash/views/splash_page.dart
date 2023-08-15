@@ -12,7 +12,10 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return const Material(
       child: Column(
-        children: [],
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CircularProgressIndicator(),
+        ],
       ),
     );
   }
