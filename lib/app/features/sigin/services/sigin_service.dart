@@ -5,6 +5,8 @@ abstract interface class ISiginService {
 final class SiginServiceImpl implements ISiginService {
   @override
   Future auth({required String int, required String password}) {
-    throw UnimplementedError();
+    try {} catch (e) {
+      rethrow;
+    }
   }
 }
